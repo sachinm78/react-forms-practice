@@ -2,16 +2,18 @@ import './App.css'
 import React, {Component} from "react"
 
 class App extends Component {
-    constructor() {
-        super()
-        this.state = {
-            firstName: "",
-            lastName: ""
-        }
-        this.handleChange = this.handleChange.bind(this)
-    }
-    
-    handleChange(event) {
+  constructor() {
+      super()
+      this.state = {
+          firstName: "",
+          lastName: "",
+          isFriendly: false,
+          gender: ""
+      }
+      this.handleChange = this.handleChange.bind(this)
+  }
+  
+  handleChange(event) {
       const {name, value, type, checked} = event.target
       type === "checkbox" ? this.setState({ [name]: checked }) : this.setState({ [name]: value })
   }
@@ -61,10 +63,31 @@ class App extends Component {
                       onChange={this.handleChange}
                   /> Is friendly?
               </label>
-                
-                
-                <h1>{this.state.firstName} {this.state.lastName}</h1>
-            </form>
+              <br />
+              <label>
+                  <input 
+                      type="radio" 
+                      name="gender"
+                      value="male"
+                      checked={this.state.gender === "male"}
+                      onChange={this.handleChange}
+                  /> Male
+              </label>
+              <br />
+              <label>
+                  <input 
+                      type="radio" 
+                      name="gender"
+                      value="female"
+                      checked={this.state.gender === "female"}
+                      onChange={this.handleChange}
+                  /> Female
+              </label>
+              {/* Formik - makes React forms simpler*/}
+              
+              <h1>{this.state.firstName} {this.state.lastName}</h1>
+              <h2>You are a {this.state.gender}</h2>
+          </form>
         )
     }
 }
