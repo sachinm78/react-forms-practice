@@ -8,7 +8,8 @@ class App extends Component {
           firstName: "",
           lastName: "",
           isFriendly: false,
-          gender: ""
+          gender: "",
+          favColor: "blue"
       }
       this.handleChange = this.handleChange.bind(this)
   }
@@ -83,10 +84,25 @@ class App extends Component {
                       onChange={this.handleChange}
                   /> Female
               </label>
-              {/* Formik - makes React forms simpler*/}
+              {/* Formik */}
+              <br />
+              
+              <label>Favorite Color:</label>
+              <select 
+                  value={this.state.favColor}
+                  onChange={this.handleChange}
+                  name="favColor"
+              >
+                  <option value="blue">Blue</option>
+                  <option value="green">Green</option>
+                  <option value="red">Red</option>
+                  <option value="orange">Orange</option>
+                  <option value="yellow">Yellow</option>
+              </select>
               
               <h1>{this.state.firstName} {this.state.lastName}</h1>
               <h2>You are a {this.state.gender}</h2>
+              <h2>Your favorite color is {this.state.favColor}</h2>
           </form>
         )
     }
